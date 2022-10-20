@@ -7,6 +7,10 @@ public func configure(_ app: Application) throws {
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     app.databases.use(.sqlite(.memory), as: .sqlite)
     
+    app.middleware.use(
+        FileMiddleware(publicDirectory: app.directory.publicDirectory)
+    )
+    
     app.migrations.add(CreateAcronym())
     app.migrations.add(CreateUser())
     app.logger.logLevel = .debug
