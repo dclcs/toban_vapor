@@ -1,9 +1,9 @@
 import Vapor
-
+import Leaf
 func routes(_ app: Application) throws {
-    app.get { req async in
-        "It works!"
-    }
+//    app.get { req async in
+//        "It works!"
+//    }
 
     app.get("hello") { req async -> String in
         "Hello, world!"
@@ -35,6 +35,8 @@ func routes(_ app: Application) throws {
     
     let usersController = UsersController()
     let acroymController = AcronymsController()
+    let websiteController = WebsiteController()
     try app.register(collection: usersController)
     try app.register(collection: acroymController)
+    try app.register(collection: websiteController)
 }
